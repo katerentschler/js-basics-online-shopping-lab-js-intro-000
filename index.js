@@ -13,7 +13,7 @@ function addToCart(name) {
 
   var itemName = name;
   var price = Math.floor(Math.random()*100);
-  var items = new Object({itemName: name, itemPrice: price});
+  var items = {itemName: name, itemPrice: price};
   getCart().push(items);
   return `${itemName} has been added to your cart.`;
 }
@@ -26,12 +26,9 @@ function viewCart() {
   }
 
   else if (getCart().length === 1){
-    //addToCart(1);
-    //setCart();
-    //while(i < getCart.length){
-    var itemNamesArray = Object.keys(getCart());
-    var itemPricesArray = Object.values(getCart());
-    return `In your cart, you have ${itemNamesArray[0]} at $${itemPricesArray[0]}.`;
+    var itemName = getCart()[0].itemName;
+    var itemPrice = getCart()[0].itemPrice;
+    return `In your cart, you have ${itemName} at $${itemPrice}.`;
   }
 }
 /*
