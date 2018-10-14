@@ -64,18 +64,10 @@ function removeFromCart(item) {
         getCart().splice(1, 1);
       }
 
-      let i = getCart().length;
-      while(getCart().length>0){
-        if(getCart()[i].itemName===item){
-          return 'That item is not in your cart.';
-        }
-        i--;
-      }
-      }
-  //  else if(firstItemName!=item || secondItemName!=item){
-    //    return `That item is not in your cart.`;
-    //}
-  //}
+    else if(firstItemName!=item || secondItemName!=item){
+        return `That item is not in your cart.`;
+    }
+  }
 
 
 function placeOrder(cardNumber) {
