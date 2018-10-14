@@ -74,7 +74,7 @@ function removeFromCart(item) {
   //  else if(firstItemName!=item || secondItemName!=item){
     //    return `That item is not in your cart.`;
     //}
-  }
+  //}
 
 
 function placeOrder(cardNumber) {
