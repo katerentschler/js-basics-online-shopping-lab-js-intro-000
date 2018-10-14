@@ -26,46 +26,60 @@ function viewCart() {
   }
 
   else if (getCart().length === 1){
-    var itemName = getCart()[0].itemName;
-    var itemPrice = getCart()[0].itemPrice;
-    return `In your cart, you have ${itemName} at $${itemPrice}.`;
+    //var itemName = getCart()[0].itemName;
+    //var itemPrice = getCart()[0].itemPrice;
+    return `In your cart, you have ${getCart()[0].itemName} at $${getCart()[0].itemPrice}.`;
+  }
+
+
+  else if (getCart().length === 2){
+    return `In your cart, you have ${getCart()[0].itemName} at $${getCart()[0].itemPrice}, and ${getCart()[1].itemName} at $${getCart()[1].itemPrice}.`;
+    }
+
+  else if (getCart().length > 1){
+    return `In your cart, you have ${getCart()[0].itemName} at $${getCart()[0].itemPrice}, ${getCart()[1].itemName} at $${getCart()[1].itemPrice}, and ${getCart()[2].itemName} at $${getCart()[2].itemPrice}.`;
   }
 }
-/*
-  else if (getCart().length > 1){
-    var itemNamesArray = Object.keys(getCart());
-    var itemPricesArray = Object.values(getCart());
-    for (let i = 1; i <= 2; i++){
-      var manyItems = `${itemNamesArray[i]} at $${itemPricesArray[i]}, and`;
-    }
-      return `In your cart, you have ${manyItems}`;
-  }
-
-  else if (getCart().length > 1){
-    let i = 0;
-    let thisCart = [];
-    while (i < getCart().length){
-      thisCart.push(`${getCart()[i].itemName} at ${getCart()[i].itemPrice}, and`);
-      i++;
-    }
-    return `In your cart, you have ${thisCart}.`;
-    //`In your cart, you have ${getCart()[i].itemName} at ${getCart()[i].itemPrice}`;
-  }*/
-/*
-item — In your cart, you have bananas at $17.
-2 items — In your cart, you have bananas at $17, and pancake batter at $5.
-3+ items — In your cart, you have bananas at $17, pancake batter at $5, and eggs at $49.
-
-*/
 
 function total() {
-  // write your code here
+  var totalCost = 0;
+  for (let i = 0; i < getCart().length; i++){
+    totalCost = totalCost + getCart()[i].itemPrice;
+  }
+  return totalCost;
 }
+
 
 function removeFromCart(item) {
-  // write your code here
-}
+
+  const firstItemName = getCart()[0].itemName;
+  const secondItemName = getCart()[1].itemName;
+
+  //if(getCart().length > 0){
+    if (firstItemName === item){
+        getCart().splice(0, 1);
+      }
+
+    else if (secondItemName === item){
+        getCart().splice(1, 1);
+      }
+
+    else if(firstItemName!=item || secondItemName!=item){
+        return `That item is not in your cart.`;
+    }
+  }
+
 
 function placeOrder(cardNumber) {
-  // write your code here
+
+  const cartTotal = total();
+  //const cardNumber = Math.floor(Math.random() * 100000000);
+  //var cardsOnFile = [cardNumber];
+  if(cardNumber > 0){
+    cart = [];
+    return `Your total cost is $${cartTotal}, which will be charged to the card ${cardNumber}.`;
+  }
+  else{
+      return `Sorry, we don't have a credit card on file for you.`;
+  }
 }
