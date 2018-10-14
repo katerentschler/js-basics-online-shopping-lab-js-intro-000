@@ -64,9 +64,16 @@ function removeFromCart(item) {
         getCart().splice(1, 1);
       }
 
-    else if(firstItemName!=item || secondItemName!=item){
-        return `That item is not in your cart.`;
-    }
+      while(getCart().length>0){
+        if(getCart()[i].itemName===item){
+          return 'That item is not in your cart.';
+        }
+        i--;
+      }
+      }
+  //  else if(firstItemName!=item || secondItemName!=item){
+    //    return `That item is not in your cart.`;
+    //}
   }
 
 
